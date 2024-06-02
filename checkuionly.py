@@ -15,11 +15,11 @@ with open(name_of_config, "r") as file:
     config = json.load(file)
 
 checkAxUITime = config["checkAxUI"]
+CHECK_INTERVAL = config["waitTime"]
 
 # Constants
 PACKAGE_NAME = "com.roblox.client"
 TARGET_ACTIVITY = ".ActivityNativeMain"
-CHECK_INTERVAL = 5  # Time between checks in seconds
 SCREENSHOT_PATH_DEVICE = "/sdcard/checkui.png"  # Screenshot path on the device
 LOCAL_SCREENSHOT_PATH = "./screenshots/"
 NAME_SCREENSHOT = "checkui.png"
@@ -145,7 +145,7 @@ def checkAxUIRunning(adb_device,target_image_path):
                             return False
             else:
                 has_20_seconds_passed(target_image_path, json_file,True)
-                return checkGuiAdk(adb_device,target_image_path)
+                #return checkGuiAdk(adb_device,target_image_path)
                     
     return True
 
@@ -193,6 +193,6 @@ try:
 
         for adb_device in devices:               
             running_process(adb_device)
-            #time.sleep(CHECK_INTERVAL)
+            time.sleep(CHECK_INTERVAL)
 except KeyboardInterrupt:
     print("Program interrupted. Exiting...")

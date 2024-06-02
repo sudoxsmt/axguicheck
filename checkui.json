@@ -1,3 +1,4 @@
 {
-    "checkAxUI": 120
+    "checkAxUI": 120,
+    "waitTime" : 5
 }
