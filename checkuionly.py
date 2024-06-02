@@ -29,6 +29,7 @@ IMG_FOLDER = "./img"
 json_file = 'image.json'
 robloxui = cv2.imread('screenshots/robloxui.png', cv2.IMREAD_GRAYSCALE)
 axui = cv2.imread('screenshots/ax_file.png', cv2.IMREAD_GRAYSCALE)
+axui2 = cv2.imread('screenshots/ax_file2.png', cv2.IMREAD_GRAYSCALE)
 guiadk = cv2.imread('screenshots/guiadk.png', cv2.IMREAD_GRAYSCALE)
 
 # Functions
@@ -138,7 +139,8 @@ def check_exist(file_name, json_file):
 def checkAxUIRunning(adb_device,target_image_path):
     if search_image(robloxui,target_image_path):
             xxx = search_image(axui,target_image_path)
-            if not xxx:
+            yyy = search_image(axui2,target_image_path)
+            if not xxx and not yyy:
                     print(f"Device {adb_device.serial}: AX UI didn't popup. Recheck..")
                     check_exist(target_image_path, json_file)
                     if has_20_seconds_passed(target_image_path, json_file,False):
